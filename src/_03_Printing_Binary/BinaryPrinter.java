@@ -7,7 +7,15 @@ public class BinaryPrinter {
 	//Don't be afraid to use the methods that are already complete to finish the others.
 	//Create a main method to test your methods.
 	
+	public static void main(String[] args) {
+		
+		
+	}
+	
+	
+	
 	public void printByteBinary(byte b) {
+
 	
 	}
 	
