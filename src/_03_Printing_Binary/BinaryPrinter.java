@@ -9,25 +9,89 @@ public class BinaryPrinter {
 	
 	public static void main(String[] args) {
 		
+		BinaryPrinter Bp = new BinaryPrinter();
+		Byte bit = (byte) 10011;
+		Short s = (short) 12321;
+		long l = (long) 1221;
+		//Bp.printByteBinary(bit);
 		
+		Bp.printLongBinary(l);
 	}
 	
 	
 	
 	public void printByteBinary(byte b) {
-
+		System.out.println(b);
 	
 	}
 	
-	public void printShortBinary(short s) {
-		
+	public void printShortBinary(short decimalNum) {
+	    String binaryStr = "";
+	    
+        do {
+            // 1. Logical right shift by 1
+            int quotient = decimalNum >>> 1;
+        
+            // 2. Check remainder and add '1' or '0'
+            if( decimalNum % 2 != 0 ){
+                binaryStr = '1' + binaryStr;
+            } else {
+                binaryStr = '0' + binaryStr;
+            }
+            
+            decimalNum = (short) quotient;
+            
+        // 3. Repeat until number is 0
+        } while( decimalNum != 0 );
+        
+        System.out.println(binaryStr);
+    
 	}
 	
-	public void printIntBinary(int i) {
-		
+	public String printIntBinary(int decimalNum) {
+	    String binaryStr = "";
+	    
+        do {
+            // 1. Logical right shift by 1
+            int quotient = decimalNum >>> 1;
+        
+            // 2. Check remainder and add '1' or '0'
+            if( decimalNum % 2 != 0 ){
+                binaryStr = '1' + binaryStr;
+            } else {
+                binaryStr = '0' + binaryStr;
+            }
+            
+            decimalNum = quotient;
+            
+        // 3. Repeat until number is 0
+        } while( decimalNum != 0 );
+        
+        return binaryStr;
+    
 	}
 	
-	public void printLongBinary(long l) {
+	public void printLongBinary(long decimalNum) {
+	    String binaryStr = "";
+	    
+        do {
+            // 1. Logical right shift by 1
+            long quotient = decimalNum >>> 1;
+        
+            // 2. Check remainder and add '1' or '0'
+            if( decimalNum % 2 != 0 ){
+                binaryStr = '1' + binaryStr;
+            } else {
+                binaryStr = '0' + binaryStr;
+            }
+            
+            decimalNum = quotient;
+            
+        // 3. Repeat until number is 0
+        } while( decimalNum != 0 );
+        
+        System.out.println(binaryStr);
+    
 		
 	}
 }
