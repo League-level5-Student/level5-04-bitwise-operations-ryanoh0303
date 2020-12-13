@@ -54,7 +54,10 @@ public class Base64Decoder {
 	public static byte[] convert4CharsTo24Bits(String s){
 		byte[] byteArr = new byte[3];
 		//first 6 bits + the last 2 bits = 8 bits
-		
+		System.out.println((byte)(7));
+		System.out.println((byte) 13);
+		System.out.println((byte) 126);
+		System.out.println((byte) 255);
 	//Bw1+
 	//1 48 53 63
 		return null;
