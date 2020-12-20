@@ -48,7 +48,7 @@ public class Base64DecoderTester {
 	}
 
 	@Test
-	public void testBase64StringToByteArray() {
+	public void testBase64StringToByteArray() { 
 		String file = "";
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("src/_04_Base64_Decoder/base64_data.txt"));
