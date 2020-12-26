@@ -59,8 +59,8 @@ public class Base64Decoder {
 		//System.out.println((byte) (convertBase64Char(s.charAt(0))));
 		//System.out.println((byte) s.charAt(2));
 		
-		test[0] =  (byte) (convertBase64Char(s.charAt(0)) >>2 | convertBase64Char(s.charAt(1)) <<4);
-		test[1] =  (byte) (convertBase64Char(s.charAt(1)) >>2 | convertBase64Char(s.charAt(2)) <<4);
+		test[0] =  (byte) (convertBase64Char(s.charAt(0)) >>2 | convertBase64Char(s.charAt(1)) <<2);
+		test[1] =  (byte) (convertBase64Char(s.charAt(1)) >>3 | convertBase64Char(s.charAt(2)) <<3);
 		test[2] =  (byte) ((convertBase64Char(s.charAt(2)) >>2) | (convertBase64Char(s.charAt(3))<<4));
 		//test[1] = (byte) (s.charAt(1) >>2 | s.charAt(2 <<4));
 		System.out.println(test[0]);
