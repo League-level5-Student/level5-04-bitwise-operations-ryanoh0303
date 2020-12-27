@@ -1,7 +1,9 @@
 package _04_Base64_Decoder;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class Base64Decoder {
 	/*
@@ -58,20 +60,20 @@ public class Base64Decoder {
 		//System.out.println((byte)convertBase64Char(s.charAt(0)));
 		//System.out.println((byte) (convertBase64Char(s.charAt(0))));
 		//System.out.println((byte) s.charAt(2));
-		System.out.println((byte) (convertBase64Char(s.charAt(0)) | convertBase64Char(s.charAt(1)) ));
-		test[0] =  (byte) (convertBase64Char(s.charAt(0)) >>2 | convertBase64Char(s.charAt(1)) <<2);
-		test[1] =  (byte) (convertBase64Char(s.charAt(1)) >>2  |convertBase64Char(s.charAt(2)) <<2);
-		test[2] =  (byte) ((convertBase64Char(s.charAt(2)) >>1) | (convertBase64Char(s.charAt(3))<<2));
+	//	System.out.println((byte) (convertBase64Char(s.charAt(0)) | convertBase64Char(s.charAt(1)) ));
+		test[0] =  (byte) (convertBase64Char(s.charAt(0)) <<2 | convertBase64Char(s.charAt(1)) >>4 );
+		test[1] =  (byte) (convertBase64Char(s.charAt(1)) << 4  |convertBase64Char(s.charAt(2)) >>2);
+		test[2] =  (byte) ((convertBase64Char(s.charAt(2)) << 4) | (convertBase64Char(s.charAt(3))>>0));
 		//test[1] = (byte) (s.charAt(1) >>2 | s.charAt(2 <<4));
-		System.out.println(test[0]);
-		System.out.println(test[1]);
-		System.out.println(test[2]);
+	//	System.out.println(test[0]);
+		//System.out.println(test[1]);
+		//System.out.println(test[2]);
 		
 		
 		//do the shifting only?
 		//shift characters 
 	
-				//ask how much do I need to shift for each character?
+				
 				
 				
 	//Bw1+
@@ -81,12 +83,42 @@ public class Base64Decoder {
 	
 	//3. Complete this method so that it takes in a string of any length
 	//   and returns the full byte array of the decoded base64 characters.
-	public static byte[] base64StringToByteArray(String file) {
+	public static byte[] base64StringToByteArray(String file)  {
+	
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("src/_04_Base64_Decoder/base64_data.txt"));
+			String line = br.readLine();
+			
 		
+			byte[] test = new byte[line.length()];
+			for(int i=0; i<line.length()-1; i++) {
+				if(i == line.length()-2) {
+					System.out.println("lol");
+					test[i] = (byte) (convertBase64Char(line.charAt(i)) <<2 | convertBase64Char(line.charAt(i+1)) >>0 );
+				}
+				if((i)%2 ==0) {
+					test[i] = (byte) (convertBase64Char(line.charAt(i)) <<2 | convertBase64Char(line.charAt(i+1)) >>2 );
+				}
+				else {
+					test[i] = (byte) (convertBase64Char(line.charAt(i)) <<2 | convertBase64Char(line.charAt(i+1)) >>2 );
+				}
+				
+				System.out.println(test[i]); //shift the unused
+			}
+			
+			br.close();
+			return test;
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+return null;
 		// aaaa =0000
 		//////=-1
 
-		return null;
 	}
 	
 }
